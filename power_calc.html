@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>Percentage Calculator</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            padding: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            font-size: xx-large;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Percentage Calculator</h1>
+    <h2>The spell has a lower percentage weight, some unit classes usually have different percentage weights</h2>
+    <h2>This difference means the calculation not an exact number, but it gives a very good approximate</h2>
+    <h2>Just be careful when you are at 80%+</h2>
+    <form id="calculator">
+        <label for="x">Current Percentage (%):</label>
+        <input type="number" id="x" name="x" required>
+        
+        <label for="y">Current amount of units:</label>
+        <input type="number" id="y" name="y" required>
+        
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+        function calculate() {
+            var x = parseFloat(document.getElementById('x').value);
+            var y = parseFloat(document.getElementById('y').value);
+            
+            if (!isNaN(x) && !isNaN(y) && x !== 0) {
+                var t = (y * 100) / x;
+                var result = "About " + Math.round(t - 1) + " units + the spell.";
+                document.getElementById('result').innerText = result;
+            } else {
+                document.getElementById('result').innerText = "Please enter valid numbers.";
+            }
+        }
+    </script>
+</body>
+</html>
